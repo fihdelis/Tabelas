@@ -1,0 +1,39 @@
+import pandas as pd
+
+df1 = pd.read_excel(r'C:\Users\....\....\.... .xlsx') #caminho especifico da tabela
+df2 = pd.read_excel(r'C:\Users\....\.....\.... .xlsx') #caminho especificico da tabela
+
+df_unificado = pd.concat([df1, df2], ignore_index=True)
+
+df_unificado.to_excel('unificado.xlsx', index=False)
+
+from tkinter import Tk, Label, Entry, Button, messagebox
+
+def fazer_login():
+    usuario = entry_usuario.get()
+    senha = entry_senha.get()
+    
+    if usuario == "admin" and senha == "123":
+        messagebox.showinfo("Login bem sucedido!")
+        
+    else:
+        messagebox.showinfo("Login ou senha incorretos!")
+        
+    
+janela = Tk()
+janela.title("Login")
+
+label_usuario = Label(janela, text ="Usuario: ")
+label_usuario.pack()
+entry_usuario=Entry(janela)
+entry_usuario.pack()
+
+label_senha = Label(janela, text="Senha: ")
+label_senha.pack()
+entry_senha=Entry(janela, show="*")
+entry_senha.pack()
+
+botao_login=Button(janela, text="Login", command=fazer_login)
+botao_login.pack()
+
+janela.mainloop()
